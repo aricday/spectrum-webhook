@@ -20,9 +20,10 @@ To get started with this project you will need the following:
 -   [Spectrum Labs account](https://www.spectrumlabsai.com/) and access credentials
 
 ### Create the Pre-Event Webhook
-Before starting, make sure you have a Twilio account. Sign up here for free: www.twilio.com/try-twilio.  If you don't currently own a Twilio phone number with SMS functionality, you'll need to purchase one. Navigate to the Buy a Number page, choose the prefix you want to use under the “Search criteria” - “Search by digits or phrases” and click "Search."  You’ll then see a list of available phone numbers and their capabilities. Find a number that you like and click "Buy" to add it to your account.
+We will be configuring a Conversations Webhook: \ 
+https://www.twilio.com/console/conversations/configuration/webhooks
 
-
+---
 ![CONFIGURE WEBHOOK](images/configureWebhook.png)
 
 Create a new function with the path /spectrum-webhook.  Delete the placeholder code and paste the following code in the editor window.
@@ -137,12 +138,6 @@ In your `.env` file, set the following values:
 | SPECTRUM_API_KEY  | The Spectrum Api Key credential                    | Yes      |
 
 
-4. Install package dependencies
-
-```
-npm install
-```
-
 
 ### Deploying
 
@@ -152,4 +147,5 @@ With the [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart):
 twilio serverless:deploy
 ```
 
+The deployed function URL can now be added to our Conversations Pre-Event Webhook.
 
