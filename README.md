@@ -110,8 +110,6 @@ Add the following dependencies to the service:
 twilio plugins:install @twilio-labs/plugin-serverless
 ```
 
-### Create the project
-
 3. Clone this project
 
 
