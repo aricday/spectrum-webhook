@@ -4,11 +4,11 @@ This function is to moderate messages between users via Twilio Conversations web
 
 Spectrum Labs helps social platforms deliver on their brand promises, drive platform improvements and create exponential impact with technology that detects disruptive behaviors in text and audio. In a few lines of code, Twilio users can integrate with Spectrum Labs and prevent messaging harassment, hate speech, scams, profanity, radicalization and other harmful behaviors, leaving room for positive engagement.
 
-## PROJECT SET UP
-
 In some instances communications may contain unwanted or abusive content, drug references, vulgarity and other objectionable messaging.  This function creates a pre-event webhook URL for Twilio Conversations to inspect message bodies for abusive content and remove communications based on results returned from Spectrum Labs API.   
 
 ---
+
+## PROJECT SET UP
 
 To get started with this project you will need the following:
 -   A Twilio account. Sign up for a [free trial account](https://www.twilio.com/try-twilio) and get free test credit.
