@@ -1,16 +1,16 @@
 # Conversation Moderation w/ Spectrum Labs
 
-This privacy app uses Twilio phone numbers to relay messages to and from users phones, via Twilio Conversations.  An integration with Spectrum Labs API allows incoming messages to be subjected to abusive content alerting and moderation.  Spectrum Labs AI engine analyzes message content for prohibited behaviors and returns a binary determination for the analyzed profiles.
+This privacy app uses Twilio phone numbers to relay messages between users via Twilio Conversations.  An integration with Spectrum Labs API allows incoming messages to be subjected to abusive content alerting and moderation.  Spectrum Labs AI engine analyzes message content for prohibited behaviors and returns a binary determination for the analyzed profiles.
 
 Spectrum Labs helps social platforms deliver on their brand promises, drive platform improvements and create exponential impact with technology that detects disruptive behaviors in text and audio. In a few lines of code, Twilio users can integrate with Spectrum Labs and prevent messaging harassment, hate speech, scams, profanity, radicalization and other harmful behaviors, leaving room for positive engagement.
 
 ## PROJECT SET UP
 
-Call masking and phone number anonymization is a common use case across various industries.  A proxy number is a cloud enabled feature that connects conversation parties without revealing their real phone numbers.  Some people in public roles are required to publish public contact information for receiving community communications.  In some instances, communications may contain unwanted or abusive content, drug references, vulgarity and other objectionable messaging.  This blog will walk you through how to utilize Twilio to create a pre-event webhook on the Conversation to inspect message bodies for abusive content and remove communications based on results returned from Spectrum Labs API.  This tutorial shows you how to create an integration with Spectrum Labs API from a Twilio serverless function to mask the actual user’s number and moderate content to user’s personal sms device.  
+Some people in public roles are required to publish public contact information for receiving community communications.  In some instances, communications may contain unwanted or abusive content, drug references, vulgarity and other objectionable messaging.  This blog will walk you through how to utilize Twilio to create a pre-event webhook for Twilio Conversations to inspect message bodies for abusive content and remove communications based on results returned from Spectrum Labs API.  This tutorial shows you how to create an integration with Spectrum Labs API from a Twilio serverless function to moderate content to user’s personal sms device.  
 
 ---
 
-One of the advantages of the Twilio cloud platform is the programmability it provides to core communication channels.  In this instance the ability to intercept an inbound sms, process the message body via api integration with Spectrum Labs for analysis, and process the Spectrum response to forward the message unimpeded to user or block the incoming message and indicate sender of blocked content.  The diagram below illustrates an unwanted escalation from Bucky Badger for an upcoming game in Madison.  The Spectrum profile analysis removes the abusive content detected as shown below.  Bucky starts sending abusive and profane messages which are blocked for Goldy.  In this example we are triggering the results based on a Profanity Behavior return from Spectrum Labs.
+One of the advantages of the Twilio cloud platform is the programmability it provides to core communication channels.  In this instance the ability to intercept messages, process the message body via api integration with Spectrum Labs for analysis, and process the Spectrum response to forward the message unimpeded to user or block the incoming message and indicate sender of blocked content. In this example we are triggering the results based on a Profanity Behavior return from Spectrum Labs.
 
 ---
 
@@ -21,9 +21,13 @@ To get started with this project you will need the following:
 
 ### Create the Pre-Event Webhook
 Before starting, make sure you have a Twilio account. Sign up here for free: www.twilio.com/try-twilio.  If you don't currently own a Twilio phone number with SMS functionality, you'll need to purchase one. Navigate to the Buy a Number page, choose the prefix you want to use under the “Search criteria” - “Search by digits or phrases” and click "Search."  You’ll then see a list of available phone numbers and their capabilities. Find a number that you like and click "Buy" to add it to your account.
+
+
 ![CONFIGURE WEBHOOK](images/configureWebhook.png)
 
 Create a new function with the path /spectrum-webhook.  Delete the placeholder code and paste the following code in the editor window.
+
+
 ```
 const fetch = require('node-fetch');
 var moment = require('moment-timezone');
@@ -88,7 +92,6 @@ To integrate this number with Spectrum Labs APIs you will need the following:
 Use the values for Spectrum API credentials to configure the following Envrionment Variables:
 | Variable          | Description                                        | Required |
 | :---------------- | :------------------------------------------------- | :------- |
-| MY_PHONE_NUMBER   | The phone number which SMS messages get relayed to | Yes      |
 | WEBHOOK_URL       | The Spectrum Labs API endpoint                     | Yes      |
 | SPECTRUM_CLIENT_ID| The Spectrum ClientID credential                   | Yes      |
 | SPECTRUM_API_KEY  | The Spectrum Api Key credential                    | Yes      |
